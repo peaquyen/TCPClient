@@ -13,6 +13,8 @@ namespace Menu
             btn_play.Click += Btn_play_Click;
             btn_exit.Click += Btn_exit_Click;
             btn_halloffame.Click += Btn_halloffame_Click;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+
         }
 
         // Xử lý nút Play → chọn vai trò → chạy exe tương ứng
@@ -61,6 +63,11 @@ namespace Menu
             Frm_HallOfFame hof = new Frm_HallOfFame();
             hof.Show();
             this.Hide(); // Ẩn menu nếu muốn
+        }
+
+        private void btn_setting_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

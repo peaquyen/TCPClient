@@ -38,11 +38,11 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 73);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 83);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(471, 257);
+            this.dataGridView1.Size = new System.Drawing.Size(477, 305);
             this.dataGridView1.TabIndex = 0;
             // 
             // lb_halloffame
@@ -56,11 +56,10 @@
             this.lb_halloffame.Size = new System.Drawing.Size(300, 42);
             this.lb_halloffame.TabIndex = 1;
             this.lb_halloffame.Text = "HALL OF FAME";
-            //this.lb_halloffame.Click += new System.EventHandler(this.label1_Click);
             // 
             // btn_back
             // 
-            this.btn_back.Location = new System.Drawing.Point(418, 336);
+            this.btn_back.Location = new System.Drawing.Point(408, 394);
             this.btn_back.Name = "btn_back";
             this.btn_back.Size = new System.Drawing.Size(75, 23);
             this.btn_back.TabIndex = 2;
@@ -72,7 +71,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(496, 362);
+            this.ClientSize = new System.Drawing.Size(491, 429);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.lb_halloffame);
             this.Controls.Add(this.dataGridView1);

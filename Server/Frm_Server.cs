@@ -7,17 +7,22 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient; // cần cài MySql.Data qua NuGet
+using System.Collections.Generic; // để dùng List<string>
+
 
 namespace Server
 {
-    public partial class Form1 : Form
+    public partial class Frm_Server : Form
     {
         SimpleTcpServer server;
         private static ArrayList allWords = new ArrayList();
         private string ourWord = "";
         private static int counter = 15;
+        private string connStr = "server=127.0.0.1;user=root;password=YOURPASS;database=yourdb;";
 
-        public Form1() { InitializeComponent(); }
+
+        public Frm_Server() { InitializeComponent(); }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -74,6 +79,9 @@ namespace Server
                     timer1.Stop();
                     lblTimer.Text = "15";
                     txtInfo.Text += $"{msg}{Environment.NewLine}";
+                    SaveWinnerToDB("PLAYER 1", allWords.Cast<string>().ToList());
+                    allWords.Clear(); // reset ván mới
+
                 }
                 else
                 {
@@ -123,8 +131,19 @@ namespace Server
                 btnSend.Enabled = false;
                 txtInfo.Text += $"------| TIME IS UP! PLAYER 2 WINS |------{Environment.NewLine}";
                 server.Send(txtClientIP.Text, $"------| TIME IS UP! PLAYER 2 WINS |------");
+
+                // 👉 Thêm đoạn này sau khi xử lý hết giờ
+                var result = MessageBox.Show("Start a new round?", "Replay", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    counter = 15;
+                    lblTimer.Text = counter.ToString();
+                    btnSend.Enabled = true;
+                    timer1.Stop(); // Đảm bảo timer reset trước khi bắt đầu lại
+                }
             }
         }
+
 
         // Hàm phụ: lấy IPv4
         private string GetLocalIPv4()
@@ -134,5 +153,22 @@ namespace Server
                       .FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork)
                       ?.ToString() ?? "127.0.0.1";
         }
+        private void SaveWinnerToDB(string winner, List<string> opponents)
+        {
+            using (var conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+                string sql = "INSERT INTO halloffame (winner_username, play_datetime, opponents) VALUES (@w, @dt, @o)";
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@w", winner);
+                    cmd.Parameters.AddWithValue("@dt", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@o", string.Join(",", opponents));
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
     }
 }

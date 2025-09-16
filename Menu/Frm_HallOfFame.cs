@@ -12,6 +12,7 @@ namespace Menu
         public Frm_HallOfFame()
         {
             InitializeComponent();
+            this.BackgroundImageLayout = ImageLayout.Stretch;
             LoadHallOfFame();
             btn_back.Click += Btn_back_Click;
         }

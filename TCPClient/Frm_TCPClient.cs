@@ -9,16 +9,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+
 
 namespace TCPClient
 {
-    public partial class Form1 : Form
+    public partial class Frm_TCPClient : Form
     {
-        public Form1()
+        public Frm_TCPClient()
         {
             InitializeComponent();
         }
         SimpleTcpClient client;
+        private string connStr = "server=127.0.0.1;user=root;password=YOURPASS;database=yourdb;";
+
+        private void SaveWinnerToDB(string winner, List<string> opponents)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+                string sql = "INSERT INTO halloffame (winner_username, play_datetime, opponents) VALUES (@winner, @dt, @opps)";
+                using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@winner", winner);
+                    cmd.Parameters.AddWithValue("@dt", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@opps", string.Join(",", opponents));
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         private static ArrayList allWords = new ArrayList();
         private string ourWord = "";
         private static int counter = 15;
@@ -26,9 +46,9 @@ namespace TCPClient
         {
             if (client.IsConnected)
             {
-                if (!string.IsNullOrEmpty(txtWord.Text))
+                if (!string.IsNullOrEmpty(btxt_word.Text))
                 {
-                    ourWord = txtWord.Text.ToLower();
+                    ourWord = btxt_word.Text.ToLower();
                     if (allWords.Count > 0)
                     {
                         if (allWords[allWords.Count - 1].ToString().Substring(allWords[allWords.Count - 1].ToString().Length - 2) == ourWord.Substring(0, 2) && !(allWords.Contains(ourWord)))
@@ -36,8 +56,8 @@ namespace TCPClient
                             lblWarning.Text = "";
                             allWords.Add(ourWord);
                             client.Send(ourWord);
-                            txtInfo.Text += $"PLAYER 2: {ourWord}{Environment.NewLine}";
-                            txtWord.Text = string.Empty;
+                            txtb_info.Text += $"PLAYER 2: {ourWord}{Environment.NewLine}";
+                            btxt_word.Text = string.Empty;
                             timer1.Stop();
                             counter = 15;
                             lblTimer.Text = counter.ToString();
@@ -48,8 +68,8 @@ namespace TCPClient
                     {
                         allWords.Add(ourWord);
                         client.Send(ourWord);
-                        txtInfo.Text += $"PLAYER 2: {ourWord}{Environment.NewLine}";
-                        txtWord.Text = string.Empty;
+                        txtb_info.Text += $"PLAYER 2: {ourWord}{Environment.NewLine}";
+                        btxt_word.Text = string.Empty;
                         timer1.Stop();
                         counter = 15;
                         lblTimer.Text = counter.ToString();
@@ -71,8 +91,8 @@ namespace TCPClient
                 //}
 
                 client.Connect();
-                btnSend.Enabled = true;
-                btnConnect.Enabled = false;
+                btn_send.Enabled = true;
+                btn_connect.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -83,11 +103,11 @@ namespace TCPClient
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            client = new(txtIp1.Text);
+            client = new(txtIp.Text);
             client.Events.Connected += Events_Connected;
             client.Events.DataReceived += Events_DataReceived;
             client.Events.Disconnected += Events_Disconnected;
-            btnSend.Enabled = false;
+            btn_send.Enabled = false;
 
 
         }
@@ -96,7 +116,7 @@ namespace TCPClient
         {
             this.Invoke((MethodInvoker)delegate
             {
-                txtInfo.Text += $"Server disconnected.{Environment.NewLine}";
+                txtb_info.Text += $"Server disconnected.{Environment.NewLine}";
             });
         }
 
@@ -106,14 +126,14 @@ namespace TCPClient
             {
                 if (Encoding.UTF8.GetString(e.Data) == "------| TIME IS UP! PLAYER 2 WINS |------")
                 {
-                    btnSend.Enabled = false;
+                    btn_send.Enabled = false;
                     timer1.Stop();
                     lblTimer.Text = "15";
-                    txtInfo.Text += $"{Encoding.UTF8.GetString(e.Data)}{Environment.NewLine}";
+                    txtb_info.Text += $"{Encoding.UTF8.GetString(e.Data)}{Environment.NewLine}";
                 }
                 else
                 {
-                    txtInfo.Text += $"PLAYER 1: {Encoding.UTF8.GetString(e.Data)}{Environment.NewLine}";
+                    txtb_info.Text += $"PLAYER 1: {Encoding.UTF8.GetString(e.Data)}{Environment.NewLine}";
                     allWords.Add(Encoding.UTF8.GetString(e.Data));
                     counter = 15;
                     timer1.Start();
@@ -125,7 +145,7 @@ namespace TCPClient
         {
             this.Invoke((MethodInvoker)delegate
             {
-                txtInfo.Text += $"Server connected.{Environment.NewLine}";
+                txtb_info.Text += $"Server connected.{Environment.NewLine}";
             });
         }
 
@@ -135,8 +155,8 @@ namespace TCPClient
             if (counter == 0)
             {
                 timer1.Stop();
-                btnSend.Enabled = false;
-                txtInfo.Text += $"------| TIME IS UP! PLAYER 1 WINS |------{Environment.NewLine}";
+                btn_send.Enabled = false;
+                txtb_info.Text += $"------| TIME IS UP! PLAYER 1 WINS |------{Environment.NewLine}";
                 client.Send($"------| TIME IS UP! PLAYER 1 WINS |------");
             }
         }
@@ -155,8 +175,8 @@ namespace TCPClient
                 //}
 
                 client.Connect();
-                btnSend.Enabled = true;
-                btnConnect.Enabled = false;
+                btn_send.Enabled = true;
+                btn_connect.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -174,9 +194,9 @@ namespace TCPClient
         {
             if (client.IsConnected)
             {
-                if (!string.IsNullOrEmpty(txtWord.Text))
+                if (!string.IsNullOrEmpty(btxt_word.Text))
                 {
-                    ourWord = txtWord.Text.ToLower();
+                    ourWord = btxt_word.Text.ToLower();
                     if (allWords.Count > 0)
                     {
                         if (allWords[allWords.Count - 1].ToString().Substring(allWords[allWords.Count - 1].ToString().Length - 2) == ourWord.Substring(0, 2) && !(allWords.Contains(ourWord)))
@@ -184,8 +204,8 @@ namespace TCPClient
                             lblWarning.Text = "";
                             allWords.Add(ourWord);
                             client.Send(ourWord);
-                            txtInfo.Text += $"PLAYER 2: {ourWord}{Environment.NewLine}";
-                            txtWord.Text = string.Empty;
+                            txtb_info.Text += $"PLAYER 2: {ourWord}{Environment.NewLine}";
+                            btxt_word.Text = string.Empty;
                             timer1.Stop();
                             counter = 15;
                             lblTimer.Text = counter.ToString();
@@ -196,8 +216,8 @@ namespace TCPClient
                     {
                         allWords.Add(ourWord);
                         client.Send(ourWord);
-                        txtInfo.Text += $"PLAYER 2: {ourWord}{Environment.NewLine}";
-                        txtWord.Text = string.Empty;
+                        txtb_info.Text += $"PLAYER 2: {ourWord}{Environment.NewLine}";
+                        btxt_word.Text = string.Empty;
                         timer1.Stop();
                         counter = 15;
                         lblTimer.Text = counter.ToString();
@@ -217,6 +237,16 @@ namespace TCPClient
         }
 
         private void guna2GradientPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void guna2HtmlLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2HtmlLabel4_Click(object sender, EventArgs e)
         {
 
         }
