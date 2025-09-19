@@ -75,7 +75,7 @@
             guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             txt_chat = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.btnChatSend = new Guna.UI2.WinForms.Guna2Button();
+            //this.btnChatSend = new Guna.UI2.WinForms.Guna2Button();
             txtChat = new System.Windows.Forms.TextBox();
             rtbChat = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -423,7 +423,7 @@
             guna2GradientPanel1.BorderThickness = 3;
             guna2GradientPanel1.Controls.Add(rtbChat);
             guna2GradientPanel1.Controls.Add(txt_chat);
-            guna2GradientPanel1.Controls.Add(this.btnChatSend);
+            //guna2GradientPanel1.Controls.Add(this.btnChatSend);
             guna2GradientPanel1.Controls.Add(txtChat);
             guna2GradientPanel1.CustomizableEdges = customizableEdges23;
             guna2GradientPanel1.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -447,28 +447,28 @@
             // 
             // btnChatSend
             // 
-            this.btnChatSend.BackColor = System.Drawing.Color.Transparent;
-            this.btnChatSend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnChatSend.BorderColor = System.Drawing.Color.Transparent;
-            this.btnChatSend.BorderRadius = 10;
-            this.btnChatSend.BorderThickness = 1;
-            this.btnChatSend.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnChatSend.CustomizableEdges = customizableEdges21;
-            this.btnChatSend.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnChatSend.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnChatSend.DisabledState.FillColor = System.Drawing.Color.FromArgb(169, 169, 169);
-            this.btnChatSend.DisabledState.ForeColor = System.Drawing.Color.FromArgb(141, 141, 141);
-            this.btnChatSend.FillColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            this.btnChatSend.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            this.btnChatSend.ForeColor = System.Drawing.Color.White;
-            this.btnChatSend.Location = new System.Drawing.Point(178, 503);
-            this.btnChatSend.Name = "btnChatSend";
-            this.btnChatSend.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            this.btnChatSend.Size = new System.Drawing.Size(129, 39);
-            this.btnChatSend.TabIndex = 13;
-            this.btnChatSend.Tag = "";
-            this.btnChatSend.Text = "Send";
-            this.btnChatSend.Click += this.BtnChatSend_Click;
+            //this.btnChatSend.BackColor = System.Drawing.Color.Transparent;
+            //this.btnChatSend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            //this.btnChatSend.BorderColor = System.Drawing.Color.Transparent;
+            //this.btnChatSend.BorderRadius = 10;
+            //this.btnChatSend.BorderThickness = 1;
+            //this.btnChatSend.Cursor = System.Windows.Forms.Cursors.Hand;
+            //this.btnChatSend.CustomizableEdges = customizableEdges21;
+            //this.btnChatSend.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            //this.btnChatSend.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            //this.btnChatSend.DisabledState.FillColor = System.Drawing.Color.FromArgb(169, 169, 169);
+            //this.btnChatSend.DisabledState.ForeColor = System.Drawing.Color.FromArgb(141, 141, 141);
+            //this.btnChatSend.FillColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            //this.btnChatSend.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            //this.btnChatSend.ForeColor = System.Drawing.Color.White;
+            //this.btnChatSend.Location = new System.Drawing.Point(178, 503);
+            //this.btnChatSend.Name = "btnChatSend";
+            //this.btnChatSend.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            //this.btnChatSend.Size = new System.Drawing.Size(129, 39);
+            //this.btnChatSend.TabIndex = 13;
+            //this.btnChatSend.Tag = "";
+            //this.btnChatSend.Text = "Send";
+            //this.btnChatSend.Click += this.BtnChatSend_Click;
             // 
             // txtChat
             // 
