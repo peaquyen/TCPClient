@@ -35,6 +35,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -47,8 +49,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             btxt_word = new System.Windows.Forms.TextBox();
             lblTimer = new System.Windows.Forms.Label();
             timer1 = new System.Windows.Forms.Timer(components);
@@ -58,6 +62,7 @@
             txtb_info = new System.Windows.Forms.TextBox();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             bg_panel = new Guna.UI2.WinForms.Guna2GradientPanel();
+            btn_leftserver = new Guna.UI2.WinForms.Guna2Button();
             lb_yourname = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txtb_name = new Guna.UI2.WinForms.Guna2TextBox();
             btn_set = new Guna.UI2.WinForms.Guna2Button();
@@ -68,9 +73,14 @@
             guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
-            btn_leftserver = new Guna.UI2.WinForms.Guna2Button();
+            guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            txt_chat = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btnChatSend = new Guna.UI2.WinForms.Guna2Button();
+            txtChat = new System.Windows.Forms.TextBox();
+            rtbChat = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             bg_panel.SuspendLayout();
+            guna2GradientPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // btxt_word
@@ -171,7 +181,7 @@
             txtb_info.Multiline = true;
             txtb_info.Name = "txtb_info";
             txtb_info.ReadOnly = true;
-            txtb_info.Size = new System.Drawing.Size(608, 207);
+            txtb_info.Size = new System.Drawing.Size(608, 222);
             txtb_info.TabIndex = 1;
             // 
             // pictureBox1
@@ -211,12 +221,37 @@
             bg_panel.Font = new System.Drawing.Font("Segoe UI", 9F);
             bg_panel.ForeColor = System.Drawing.Color.Black;
             bg_panel.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            bg_panel.Location = new System.Drawing.Point(109, 75);
+            bg_panel.Location = new System.Drawing.Point(36, 75);
             bg_panel.Name = "bg_panel";
             bg_panel.ShadowDecoration.CustomizableEdges = customizableEdges14;
             bg_panel.Size = new System.Drawing.Size(741, 578);
             bg_panel.TabIndex = 15;
             bg_panel.Paint += guna2GradientPanel1_Paint;
+            // 
+            // btn_leftserver
+            // 
+            btn_leftserver.BackColor = System.Drawing.Color.Transparent;
+            btn_leftserver.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            btn_leftserver.BorderColor = System.Drawing.Color.Transparent;
+            btn_leftserver.BorderRadius = 10;
+            btn_leftserver.BorderThickness = 1;
+            btn_leftserver.Cursor = System.Windows.Forms.Cursors.Hand;
+            btn_leftserver.CustomizableEdges = customizableEdges5;
+            btn_leftserver.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            btn_leftserver.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            btn_leftserver.DisabledState.FillColor = System.Drawing.Color.FromArgb(169, 169, 169);
+            btn_leftserver.DisabledState.ForeColor = System.Drawing.Color.FromArgb(141, 141, 141);
+            btn_leftserver.FillColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            btn_leftserver.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btn_leftserver.ForeColor = System.Drawing.Color.White;
+            btn_leftserver.Location = new System.Drawing.Point(497, 503);
+            btn_leftserver.Name = "btn_leftserver";
+            btn_leftserver.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btn_leftserver.Size = new System.Drawing.Size(179, 39);
+            btn_leftserver.TabIndex = 21;
+            btn_leftserver.Tag = "";
+            btn_leftserver.Text = "Left Server";
+            btn_leftserver.Click += btn_leftserver_Click_1;
             // 
             // lb_yourname
             // 
@@ -345,7 +380,7 @@
             guna2ControlBox1.CustomizableEdges = customizableEdges15;
             guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(139, 152, 166);
             guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            guna2ControlBox1.Location = new System.Drawing.Point(897, 0);
+            guna2ControlBox1.Location = new System.Drawing.Point(1141, 0);
             guna2ControlBox1.Name = "guna2ControlBox1";
             guna2ControlBox1.ShadowDecoration.CustomizableEdges = customizableEdges16;
             guna2ControlBox1.Size = new System.Drawing.Size(56, 36);
@@ -359,7 +394,7 @@
             guna2ControlBox2.CustomizableEdges = customizableEdges17;
             guna2ControlBox2.FillColor = System.Drawing.Color.FromArgb(139, 152, 166);
             guna2ControlBox2.IconColor = System.Drawing.Color.White;
-            guna2ControlBox2.Location = new System.Drawing.Point(841, 0);
+            guna2ControlBox2.Location = new System.Drawing.Point(1085, 0);
             guna2ControlBox2.Name = "guna2ControlBox2";
             guna2ControlBox2.ShadowDecoration.CustomizableEdges = customizableEdges18;
             guna2ControlBox2.Size = new System.Drawing.Size(56, 36);
@@ -373,35 +408,85 @@
             guna2ControlBox3.CustomizableEdges = customizableEdges19;
             guna2ControlBox3.FillColor = System.Drawing.Color.FromArgb(139, 152, 166);
             guna2ControlBox3.IconColor = System.Drawing.Color.White;
-            guna2ControlBox3.Location = new System.Drawing.Point(785, 0);
+            guna2ControlBox3.Location = new System.Drawing.Point(1029, 0);
             guna2ControlBox3.Name = "guna2ControlBox3";
             guna2ControlBox3.ShadowDecoration.CustomizableEdges = customizableEdges20;
             guna2ControlBox3.Size = new System.Drawing.Size(56, 36);
             guna2ControlBox3.TabIndex = 18;
             // 
-            // btn_leftserver
+            // guna2GradientPanel1
             // 
-            btn_leftserver.BackColor = System.Drawing.Color.Transparent;
-            btn_leftserver.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            btn_leftserver.BorderColor = System.Drawing.Color.Transparent;
-            btn_leftserver.BorderRadius = 10;
-            btn_leftserver.BorderThickness = 1;
-            btn_leftserver.Cursor = System.Windows.Forms.Cursors.Hand;
-            btn_leftserver.CustomizableEdges = customizableEdges5;
-            btn_leftserver.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            btn_leftserver.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            btn_leftserver.DisabledState.FillColor = System.Drawing.Color.FromArgb(169, 169, 169);
-            btn_leftserver.DisabledState.ForeColor = System.Drawing.Color.FromArgb(141, 141, 141);
-            btn_leftserver.FillColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            btn_leftserver.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            btn_leftserver.ForeColor = System.Drawing.Color.White;
-            btn_leftserver.Location = new System.Drawing.Point(497, 503);
-            btn_leftserver.Name = "btn_leftserver";
-            btn_leftserver.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btn_leftserver.Size = new System.Drawing.Size(179, 39);
-            btn_leftserver.TabIndex = 21;
-            btn_leftserver.Tag = "";
-            btn_leftserver.Text = "Left Server";
+            guna2GradientPanel1.BackColor = System.Drawing.Color.Transparent;
+            guna2GradientPanel1.BackgroundImage = Properties.Resources.nền;
+            guna2GradientPanel1.BorderColor = System.Drawing.Color.Maroon;
+            guna2GradientPanel1.BorderRadius = 20;
+            guna2GradientPanel1.BorderThickness = 3;
+            guna2GradientPanel1.Controls.Add(rtbChat);
+            guna2GradientPanel1.Controls.Add(txt_chat);
+            guna2GradientPanel1.Controls.Add(this.btnChatSend);
+            guna2GradientPanel1.Controls.Add(txtChat);
+            guna2GradientPanel1.CustomizableEdges = customizableEdges23;
+            guna2GradientPanel1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            guna2GradientPanel1.ForeColor = System.Drawing.Color.Black;
+            guna2GradientPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            guna2GradientPanel1.Location = new System.Drawing.Point(816, 75);
+            guna2GradientPanel1.Name = "guna2GradientPanel1";
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            guna2GradientPanel1.Size = new System.Drawing.Size(339, 578);
+            guna2GradientPanel1.TabIndex = 19;
+            // 
+            // txt_chat
+            // 
+            txt_chat.BackColor = System.Drawing.Color.Transparent;
+            txt_chat.Font = new System.Drawing.Font("Cambria", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            txt_chat.Location = new System.Drawing.Point(31, 24);
+            txt_chat.Name = "txt_chat";
+            txt_chat.Size = new System.Drawing.Size(111, 34);
+            txt_chat.TabIndex = 20;
+            txt_chat.Text = "Box Chat";
+            // 
+            // btnChatSend
+            // 
+            this.btnChatSend.BackColor = System.Drawing.Color.Transparent;
+            this.btnChatSend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnChatSend.BorderColor = System.Drawing.Color.Transparent;
+            this.btnChatSend.BorderRadius = 10;
+            this.btnChatSend.BorderThickness = 1;
+            this.btnChatSend.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChatSend.CustomizableEdges = customizableEdges21;
+            this.btnChatSend.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnChatSend.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnChatSend.DisabledState.FillColor = System.Drawing.Color.FromArgb(169, 169, 169);
+            this.btnChatSend.DisabledState.ForeColor = System.Drawing.Color.FromArgb(141, 141, 141);
+            this.btnChatSend.FillColor = System.Drawing.Color.FromArgb(255, 128, 128);
+            this.btnChatSend.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            this.btnChatSend.ForeColor = System.Drawing.Color.White;
+            this.btnChatSend.Location = new System.Drawing.Point(178, 503);
+            this.btnChatSend.Name = "btnChatSend";
+            this.btnChatSend.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            this.btnChatSend.Size = new System.Drawing.Size(129, 39);
+            this.btnChatSend.TabIndex = 13;
+            this.btnChatSend.Tag = "";
+            this.btnChatSend.Text = "Send";
+            this.btnChatSend.Click += this.BtnChatSend_Click;
+            // 
+            // txtChat
+            // 
+            txtChat.Font = new System.Drawing.Font("Cambria", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            txtChat.Location = new System.Drawing.Point(31, 447);
+            txtChat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtChat.Name = "txtChat";
+            txtChat.Size = new System.Drawing.Size(276, 39);
+            txtChat.TabIndex = 1;
+            txtChat.TextChanged += textBox2_TextChanged;
+            // 
+            // rtbChat
+            // 
+            rtbChat.Location = new System.Drawing.Point(31, 75);
+            rtbChat.Name = "rtbChat";
+            rtbChat.Size = new System.Drawing.Size(276, 342);
+            rtbChat.TabIndex = 21;
+            rtbChat.Text = "";
             // 
             // Frm_TCPClient
             // 
@@ -409,12 +494,13 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.SlateGray;
             BackgroundImage = Properties.Resources.nền22;
-            ClientSize = new System.Drawing.Size(953, 681);
+            ClientSize = new System.Drawing.Size(1197, 681);
+            Controls.Add(guna2GradientPanel1);
+            Controls.Add(bg_panel);
             Controls.Add(guna2ControlBox3);
             Controls.Add(guna2ControlBox2);
             Controls.Add(guna2ControlBox1);
             Controls.Add(lblWarning);
-            Controls.Add(bg_panel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             MaximizeBox = false;
@@ -425,6 +511,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             bg_panel.ResumeLayout(false);
             bg_panel.PerformLayout();
+            guna2GradientPanel1.ResumeLayout(false);
+            guna2GradientPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -447,11 +535,16 @@
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox3;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel lb_yourname;
         private Guna.UI2.WinForms.Guna2TextBox txtb_name;
         private Guna.UI2.WinForms.Guna2Button btn_set;
         private Guna.UI2.WinForms.Guna2Button btn_leftserver;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel txt_chat;
+        private Guna.UI2.WinForms.Guna2Button btn_sendmessage;
+        private System.Windows.Forms.TextBox txtb_chatmessage;
+        private System.Windows.Forms.TextBox txtChat;
+        private System.Windows.Forms.RichTextBox rtbChat;
     }
 }
 

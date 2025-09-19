@@ -1,4 +1,5 @@
-﻿using SimpleTcp;
+﻿using MySql.Data.MySqlClient;
+using SimpleTcp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace TCPClient
@@ -82,13 +83,13 @@ namespace TCPClient
             try
             {
 
-                // if (client == null)
-                // {
-                //    client = new SimpleTcpClient(txtIp.Text);
-                //    client.Events.Connected += Events_Connected;
-                //    client.Events.DataReceived += Events_DataReceived;
-                //    client.Events.Disconnected += Events_Disconnected;
-                //}
+                if (client == null)
+                {
+                    client = new SimpleTcpClient(txtb_ipserver.Text);
+                    client.Events.Connected += Events_Connected;
+                    client.Events.DataReceived += Events_DataReceived;
+                    client.Events.Disconnected += Events_Disconnected;
+                }
 
                 client.Connect();
                 btn_send.Enabled = true;
@@ -97,19 +98,20 @@ namespace TCPClient
             catch (Exception ex)
             {
 
-                MessageBox.Show($"Your connection proccess is wrong!{Environment.NewLine}Server ip and port format must be '127.0.0.1:9000'");
+                MessageBox.Show($"Your connection proccess is wrong!{Environment.NewLine}Server ip and port format must be '127.0.0.1:9000' (LAN dùng IP host như 192.168.x.x:9000)");
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            client = new(txtIp.Text);
-            client.Events.Connected += Events_Connected;
-            client.Events.DataReceived += Events_DataReceived;
-            client.Events.Disconnected += Events_Disconnected;
-            btn_send.Enabled = false;
+            //client = new (txtb_ipserver.Text);
+            //client.Events.Connected += Events_Connected;
+            //client.Events.DataReceived += Events_DataReceived;
+            //client.Events.Disconnected += Events_Disconnected;
+            //btn_send.Enabled = false;
 
-
+            // --- Đăng ký event cho nút Left Server (đã thêm) ---
+            btn_leftserver.Click += btn_leftserver_Click;
         }
 
         private void Events_Disconnected(object sender, ClientDisconnectedEventArgs e)
@@ -166,13 +168,13 @@ namespace TCPClient
             try
             {
 
-                // if (client == null)
-                // {
-                //    client = new SimpleTcpClient(txtIp.Text);
-                //    client.Events.Connected += Events_Connected;
-                //    client.Events.DataReceived += Events_DataReceived;
-                //    client.Events.Disconnected += Events_Disconnected;
-                //}
+                if (client == null)
+                {
+                    client = new SimpleTcpClient(txtb_ipserver.Text);
+                    client.Events.Connected += Events_Connected;
+                    client.Events.DataReceived += Events_DataReceived;
+                    client.Events.Disconnected += Events_Disconnected;
+                }
 
                 client.Connect();
                 btn_send.Enabled = true;
@@ -226,6 +228,44 @@ namespace TCPClient
             }
         }
 
+        // --- HÀM LEFT SERVER (đã thêm) ---
+        private void btn_leftserver_Click(object sender, EventArgs e)
+        {
+            // 1) Ngắt kết nối
+            try
+            {
+                if (client != null && client.IsConnected) client.Disconnect();
+            }
+            catch { }
+
+            // 2) Tìm class Frm_Menu mà không cần namespace
+            try
+            {
+                var frmType = AppDomain.CurrentDomain
+                    .GetAssemblies()
+                    .SelectMany(x => x.GetTypes())
+                    .FirstOrDefault(t => t.Name == "Frm_Menu");
+
+                if (frmType != null)
+                {
+                    Form menu = (Form)Activator.CreateInstance(frmType);
+                    menu.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy Frm_Menu. Kiểm tra tên class.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi mở Frm_Menu: " + ex.Message);
+            }
+
+            // 3) Đóng form hiện tại
+            this.Close();
+        }
+
+
         private void guna2PictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -247,6 +287,21 @@ namespace TCPClient
         }
 
         private void guna2HtmlLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_leftserver_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnChatSend_Click(object sender, EventArgs e)
         {
 
         }
